@@ -1,3 +1,4 @@
+// asincronos en secuencial ->
 //En lugar de utilizar callbacks vamos a utilizar promesas
 const fs = require("node:fs");
 //Si algun modulo de node.js no tuviese aun implementadas las promesas podriamos hacerlo igual gracias al modulo 'promisify'

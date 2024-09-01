@@ -1,3 +1,4 @@
+// asincronos en callback -> libera el espacio y se puede utilizar mientras se resuelve los callbacks
 const fs = require("node:fs");
 
 console.log("Leyendo el primer archivo ...");
