@@ -3,7 +3,6 @@ const fs = require("node:fs");
 
 console.log("Leyendo el primer archivo ...");
 
-// eslint-disable-next-line
 fs.readFile("./archivo.txt", "utf-8", (err, data) => {
   //<- Funcion de callback, cuando se resuelva esta llamada ya se ejecutara
 
