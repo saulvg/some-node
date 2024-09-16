@@ -1,0 +1,32 @@
+{
+  "name": "some-node",
+  "version": "1.0.0",
+  "description": "Conocimientos de node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saulvg/some-node.git"
+  },
+  "keywords": [
+    "curso",
+    "node",
+    "nodejs"
+  ],
+  "author": "Saul vg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saulvg/some-node/issues"
+  },
+  "homepage": "https://github.com/saulvg/some-node#readme",
+  "dependencies": {
+    "picocolors": "1.1.0"
+  },
+  "devDependencies": {
+    "standard": "17.1.2"
+  }
+  
+}
+
