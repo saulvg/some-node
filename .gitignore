@@ -19,7 +19,7 @@ yarn-error.log*
 *.env
 *.env.*
 # Este no se ignora
-!env.example
+!.env.example
 
 # Configuraciones específicas de sistemas operativos
 .DS_Store       # MacOS
