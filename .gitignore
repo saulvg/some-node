@@ -1,0 +1,35 @@
+# Dependencias instaladas por npm
+node_modules/
+
+# Lock files (para evitar conflictos entre diferentes versiones)
+package-lock.json
+yarn.lock
+
+# Directorios de build o dist
+dist/
+build/
+
+# Archivos temporales o de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de entorno (que pueden contener información sensible)
+*.env
+*.env.*
+# Este no se ignora
+!env.example
+
+# Configuraciones específicas de sistemas operativos
+.DS_Store       # MacOS
+Thumbs.db       # Windows
+
+# Archivos de pruebas o caches
+coverage/
+.vscode/        # Configuración de VSCode si no quieres compartirla
+.idea/          # Archivos de configuración de IDEs como WebStorm
+
+# Otros archivos temporales
+*.tmp
+*.swp
