@@ -1,6 +1,6 @@
 // Sin utilizar variables de entorno inidcariamos en la linea de comandos el puerto al que atacamos ->
-// Linux y mac -> PORT=1234  node .\miniApps\10.1.httpPlusFreeEnv.js
-// Windows -> $env:PORT=1234; node .\miniApps\10.1.httpPlusFreeEnv.js
+// Linux y mac -> PORT=1234  node .\lesson-1\miniApps\10.1.httpPlusFreeEnv.js
+// Windows -> $env:PORT=1234; node .\lesson-1\miniApps\10.1.httpPlusFreeEnv.js
 
 // Utilizamos las variables de entorno del .env necesitariamos instalar alguna dependencia como dotenv (hay otras alternativas)
 
@@ -12,6 +12,8 @@
 
 const http = require("node:http");
 const { findAvailablePort } = require("./9.free-port");
+
+console.log(process.env);
 
 const desirePort = process.env.PORT ?? 3000;
 
