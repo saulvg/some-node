@@ -4,6 +4,7 @@
   "description": "Conocimientos de node",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon lesson-2/1.http.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,8 +26,7 @@
     "picocolors": "1.1.0"
   },
   "devDependencies": {
+    "nodemon": "^3.1.7",
     "standard": "17.1.2"
   }
-  
 }
-
