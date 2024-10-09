@@ -32,9 +32,10 @@ const processRequest = (req, res) => {
             res.writeHead(201, {
               "Content-Type": "application/json; charset=utf-8",
             });
+            data.timestamp = new Date().toLocaleTimeString();
             res.end(JSON.stringify(data));
           });
-          break;
+          return;
         }
 
         default:
