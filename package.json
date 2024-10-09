@@ -4,7 +4,8 @@
   "description": "Conocimientos de node",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon lesson-2/1.http.js",
+    "dev1": "nodemon lesson-2/1.http.js",
+    "dev2": "nodemon lesson-2/2.routing.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
