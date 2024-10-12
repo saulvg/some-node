@@ -4,8 +4,9 @@
   "description": "Conocimientos de node",
   "main": "index.js",
   "scripts": {
-    "dev1": "nodemon lesson-2/1.http.js",
-    "dev2": "nodemon lesson-2/2.routing.js",
+    "dev:1": "nodemon lesson-2/1.http.js",
+    "dev:2": "nodemon lesson-2/2.routing.js",
+    "dev:3": "node --watch lesson-2/3.express.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/saulvg/some-node#readme",
   "dependencies": {
+    "express": "4.21.1",
     "picocolors": "1.1.0"
   },
   "devDependencies": {
