@@ -11,39 +11,35 @@ app.disable("x-powered-by");
 
 const PORT = process.env.PORT ?? 1234;
 
-//Los middlewares se ejecutan para todas las peticiones a no ser que lo indiques las url a las que quieres que ataque
-app.use((req, res, next) => {
-  console.log("Middleware");
-  //Trackear la request a la base de datos
-  //Revisar si el user tiene cookies
-  //etc..
+//Para este middleware que acabamos de hacer, express lo tiene por defecto con
+/* app.use((req, res, next) => {
+  if (req.method !== "POST") return next();
+  if (req.headers["content-type"] !== "application/json") return next();
 
-  //Next para que pase a lo siguiente
-  next();
-});
-
-//Los middlewares se ejecutan para todas las peticiones bajo '/url-a-atacar'
-app.use("/url-a-atacar", (req, res, next) => {
-  console.log("Middleware");
-  next();
-});
-
-app.get("/", (req, res) => {
-  res.status("200").send("<h1>Mi pagina</h1>");
-});
-
-app.post("/pokemon", (req, res) => {
+  //Solo llegan las REQ que son POST y que tienen el header Content-Type: application/json
   let body = "";
+
   req.on("data", (chunk) => {
     body += chunk.toString();
   });
 
   req.on("end", () => {
     const data = JSON.parse(body);
-
     data.timestamp = new Date().toLocaleTimeString();
-    res.status("201").json(data);
+
+    req.body = data;
+    next();
   });
+}); */
+
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.status("200").send("<h1>Mi pagina</h1>");
+});
+
+app.post("/pokemon", (req, res) => {
+  res.status("201").json(req.body);
 });
 
 app.use((req, res) => {
