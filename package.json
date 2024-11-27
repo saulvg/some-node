@@ -27,7 +27,8 @@
   "homepage": "https://github.com/saulvg/some-node#readme",
   "dependencies": {
     "express": "4.21.1",
-    "picocolors": "1.1.0"
+    "picocolors": "1.1.0",
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",
