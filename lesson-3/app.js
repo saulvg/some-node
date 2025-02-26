@@ -16,7 +16,7 @@ const express = require("express"); // require -> commonJS
 const movies = require("./movies.json");
 //Para crear un codigo alfanumerico unico
 const crypto = require("node:crypto");
-const { validateMovie } = require("./shemas/movies");
+const { validateMovie, validatePartialMovie } = require("./shemas/movies");
 //const z = require("zod");
 
 const app = express();
@@ -24,7 +24,7 @@ const app = express();
 //Middleware de express para "construir" el body, en la clase anterior uniamos a mano los chunks para crearlo
 app.use(express.json());
 
-app.disable("x-power-by"); //deshabilita el header x-power-by:express
+app.disable("x-powered-by:express"); //deshabilita el header x-power-by:express
 
 app.get("/", (req, res) => {
   //Podriamos leer el query param de format
@@ -35,8 +35,17 @@ app.get("/", (req, res) => {
   res.json({ message: "hola mundo" });
 });
 
+const ACCEPTED_ORIGINS = ["http://127.0.0.1:5500", "http://localhost:1234"];
 //Todos los recursos que sean movies se identifican con /movies
 app.get("/movies", (req, res) => {
+  //res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  //Pero cuidado, porque la peticion no envie nunca el header de origin cuando la peticion es del mismo origin
+  const origin = req.header("origin");
+  if (ACCEPTED_ORIGINS.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
   const { genre } = req.query;
 
   if (genre) {
@@ -128,6 +137,28 @@ app.post("/movies", (req, res) => {
   movies.push(newMovie);
 
   res.status(201).json(newMovie); //Puede ser interesante devolver el recurso creado para limpiar la cache del cliente
+});
+
+app.patch("/movies/:id", (req, res) => {
+  const result = validatePartialMovie(req.body);
+  if (!result.success) {
+    return res.status(400).json({ error: JSON.parse(result.error.message) });
+  }
+
+  const { id } = req.params;
+  const movieIndex = movies.findIndex((movie) => movie.id === id);
+
+  if (movieIndex === -1) {
+    return res.status(400).json({ message: "Movie not found" });
+  }
+
+  const updateMovie = {
+    ...movies[movieIndex],
+    ...result.data,
+  };
+  movies[movieIndex] = updateMovie;
+
+  return res.json(updateMovie);
 });
 
 const PORT = process.env.PORT ?? 1234;

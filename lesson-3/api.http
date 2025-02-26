@@ -31,3 +31,14 @@ Content-Type: application/json
     "year": 2020,
     "director": "Saul Good Man"
 }
+
+# No podremos cambiar el id porque en la validacion de los campos que hacemos el id no esta por lo tanto lo ignora
+### Actualizar una pelicula
+PATCH http://localhost:1234/movies/6a360a18-c645-4b47-9a7b-2a71babbf3e0
+Content-Type: application/json
+
+{
+    "year":2021,
+    "title": "Avatar 2",
+    "id": "Cualquiera"
+}
